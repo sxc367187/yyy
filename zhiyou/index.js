@@ -13,10 +13,7 @@ app.post('/zc',function(req,res){
 
 var pwd = req.body.pwd;
 var name = req.body.username;
-console.log(name)
-console.log(pwd)
-res.send({'name':name, 
-           'pwd':pwd})
+res.send('登录成功')
 })
 
 
