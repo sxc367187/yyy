@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+     <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+      <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+     
+     <style type="text/css">
+     .navbar-fixed-top{
+     	text-align: center;
+     	line-height: 50px;
+     	font-size: 20px;
+     	font-weight: 900;
+     	color: grey;
+     }	
+     .glyphicon-chevron-left,.glyphicon-home {
+     	line-height:51px;
+     	height: 30px;
+     	width: 30px;
+     	color: grey ;
+     	font-size: 20px;
+     	margin: 0 30px;
+     	cursor: pointer;
+     } 	
+     .form-control{
+        margin: 10px 10px;
+     	height: 50px;
+     }
+     #formm{
+     	margin:100px auto ;
+     	width: 90%;	
+     }
+     .radio{
+     	margin: 10px 25px;
+     	font-weight: 800px;
+     }
+     	.btn-success{
+     			margin: 10px 10px;
+     	}
+     </style>
+    <title>智游问答</title>
+   
+
+ 
+  </head>
+  <body>
+   <nav class="navbar navbar-inverse navbar-fixed-top">
+  <span class="glyphicon glyphicon-chevron-left pull-left" id="">
+  </span>
+  注册
+  <span class="glyphicon glyphicon-home pull-right" id="">
+  </span>
+</nav>
+	<div id="formm">
+		<form class="zhuche" action="/zc" method="post">
+			<!--username-->
+		<input type="text" class="form-control"name="username" autofocus pattern="[a-zA-Z\u4e00\u9fa5]{3,}" placeholder="请填写昵称">
+		<!--psw-->
+		<input type="text" class="form-control"name="pwd"id="pwd" placeholder="请填写密码">
+		<!--psw_s-->
+		<input type="text" class="form-control" name="pwd_s" id="pwd_s" placeholder="请再次填写密码">
+	<div class="radio">
+  <label>
+    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>男士
+  </label>
+  
+</div>
+<div class="radio">
+  <label>
+    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">女士
+  </label>
+</div>
+		<input type="email" class="form-control" placeholder="请填写邮箱">
+		
+		<select class="form-control input-lg">
+			<option value="">IOS</option>
+			<option value="">安卓</option>
+		
+		</select>
+<input type="submit" class="btn btn-success btn-lg btn-block"class="tj" value="注册">
+<!--<input type="submit" name="" id="" value="" />-->
+	</form>
+	</div>
+	
+
+<script type="text/javascript">
+
+			$('.glyphicon-chevron-left').click(function(){history.back();	})
+			$('.glyphicon-home').click(function(){location.href = 'index.html';})
+		  var pwd =$('#pwd').val();
+		  var pwds = $('#pwd_s').val(); 
+		  $('.tj').click(function(){
+		 	if(pwd != pwds){
+		 	alert('两次密码输入不一致');
+		 	event.preventDefault();
+		 	}
+		 	   $.ajax({ 	
+            	type:"post",
+            	url:"/zc",
+//          url:"test2.txt",
+//          dataType:'json',//从服务器返回的预期的数据类型(xml, json, script, text，html)
+            	async:true
+            }).done(function(data,textStatus,jqXHR){
+            	  console.log('请求成功');
+							 
+								
+								//打印所有的参数
+            	  // console.log(arguments);
+            	  console.log(data);//请求获取到的数据
+            	  // console.log(textStatus);//请求数据返回的状态(success/error)
+            	  // console.log(jqXHR);//	  	
+            }).fail(function(jqXHR,textStatus,error){
+            	console.log('请求失败');
+            	console.log(arguments);
+            }).always(function(){
+            	 console.log(arguments);
+
+            })
+		
+		  })
+		  
+		  
+		
+		
+		 
+		
+</script>
+   
+  
+ 
+    
+  </body>
+ 
+</html>
