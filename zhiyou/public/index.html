@@ -41,12 +41,9 @@
 		
 		
 <script type="text/javascript">
-	$('.glyphicon-user').click(function(){
-		
-	})
-		$('.glyphicon-screenshot').click(function(){
-		
-	})
+$.post('/dengl',function(data){
+		   $('.glyphicon-user').text(data.name)
+		     	})
 	
 	
 	

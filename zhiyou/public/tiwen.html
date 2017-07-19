@@ -56,7 +56,7 @@
   </span>
 </nav>
   <div class="form-group">
-  <form action="" method="post">
+  <form action="/tiwen" method="post">
   	<textarea class="form-control" rows="10"></textarea>
   
   <input type="button" class="btn btn-success btn-lg btn-block"value="注册" id="bu">
@@ -69,6 +69,16 @@
 	
 
 <script type="text/javascript">
+ $('form').submit(function(event){
+			event.preventDefault();
+			var data = $(this).serialize();
+			// 发送post 提问 请求
+			$.post('/tiwen',data,function(resData){
+				
+				console.log("11")
+
+			});
+		});
 
 
 </script>

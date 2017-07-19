@@ -100,11 +100,11 @@
 		 	if(pwd != pwds){
 		 		
 		 	alert('两次密码输入不一致');
-		 	
 		 	}else{
 		     $.post('/zc',$('#fm').serialize(),function(data){
 		     	  console.log(data)
 		     	  alert(data) 
+		     location.href = 'denglu.html';
 		     })
 		  }
 

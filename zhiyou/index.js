@@ -64,7 +64,17 @@ app.post('/dengl',function(req,res){
 	
 	var name = req.body.username;
 	var pwd = req.body.pwd;
-	//判断用户是否存在,并保存该用户在数组中的索引值
+
+	console.log(name)
+	if(name.length<=0){
+		res.send({inm:'账户名不能为空',kk:'1'});
+	}
+	
+	if(pwd.length<=0){
+		res.send({inm:'密码不能为空',kk:'1'});//一旦发送数据给前端,程序到此为止,不再往下执行
+	}
+//	
+	
 	var hasuser = null;
 	for(var i = 0;i<users.length;i++){
 		if(users[i].name == name ){
@@ -77,18 +87,15 @@ app.post('/dengl',function(req,res){
 		
 		if(users[hasuser].pwd == pwd){
 			
-			res.send('登录成功');
+			res.send({inm:'登录成功',kk:'1'});
 			
 //			res.send('登录成功');
-		}
-		else{
-			res.send('你输入的密码有误');
-		}
-		
-	}
-	else
+		}else{
+			res.send({inm:'你输入的密码有误',kk:'1'});
+            }
+	}else
 	{
-		res.send('该用户不存在');
+		res.send({inm:'该用户不存在',kk:'1'});
 	}
 
 })
@@ -97,7 +104,55 @@ app.post('/dengl',function(req,res){
     });
 
    
+app.post('/tiwen',function(req,res){
+    
+	// console.log(res.cookie('petname'));
+	
 
+    fs.exists('questions',function(exist){
+        if(exist){
+         
+            writeFile();
+        }else{
+            
+            fs.mkdir('questions',function(err){
+                if(err){
+                 
+                    res.status(200).json({
+                            message:"文件创建失败！"  
+                        })
+                }else{
+                    // 文件创建成功 
+                    writeFile();
+                }   
+            })
+        }
+    })
+    // 把问题写入文件
+    function writeFile(){
+       
+        var date = new Date();
+        var fileName = 'questions/'+ date.getTime() + '.txt';
+        // 存储信息  昵称、ip、时间
+        req.body.petname = req.cookies.petname
+        req.body.ip = req.ip
+        req.body.time = date
+
+        // 写入文件
+        fs.writeFile(fileName,JSON.stringify(req.body),function(err){
+            if(err){
+                res.status(200).json({
+                        message:"写入文件失败！"  
+                    });
+            }else{
+                res.status(200).json({
+                        code:"1",
+                        message:"大功告成！！"  
+                    });
+            }
+        }) 
+    }
+})
 
 
 app.listen(3000,function(){

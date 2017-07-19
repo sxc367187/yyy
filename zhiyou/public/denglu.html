@@ -56,7 +56,7 @@
   </span>
 </nav>
 	<div id="formm">
-		<form class="biaodan" action="/zc" method="post">
+		<form class="biaodan" action="/dengl" method="post">
 		<input type="text" name="username" class="form-control" autofocus pattern="[a-zA-Z\u4e00\u9fa5]{3,}" placeholder="请填写昵称">
 		<input type="text" name="pwd" class="form-control" placeholder="请填写密码">
 		
@@ -65,8 +65,16 @@
 	</form>
 	</div>
 	<script type="text/javascript">
+	$(".btn-success").click(function(){
+			$.post('/dengl',$('.biaodan').serialize(),function(data){
+		     	  console.log(JSON.parse(data))
+		     	  
+		     	  alert(data) 
+		     	  location.href = 'index.html';
+		  
+		})
+	})
 	
-		
 		
 		
 
