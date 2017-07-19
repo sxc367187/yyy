@@ -74,7 +74,7 @@
     <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">女士
   </label>
 </div>
-		<input type="email" class="form-control" placeholder="请填写邮箱">
+		<input type="email" class="form-control"name="email" placeholder="请填写邮箱">
 		
 		<select class="form-control input-lg">
 			<option value="">IOS</option>
@@ -91,19 +91,23 @@
 
 			$('.glyphicon-chevron-left').click(function(){history.back();	})
 			$('.glyphicon-home').click(function(){location.href = 'index.html';})
-		  var pwd =$('#pwd').val();
+		
+		 
+		 $('#bu').click(function(){
+		 	  var pwd =$('#pwd').val();
 		  var pwds = $('#pwd_s').val(); 
-		  $('#bu').click(function(){
-		  	console.log(111111111)
+//		  	console.log(111111111)
 		 	if(pwd != pwds){
 		 		
 		 	alert('两次密码输入不一致');
 		 	
 		 	}else{
 		     $.post('/zc',$('#fm').serialize(),function(data){
-		     	  alert(data)
+		     	  console.log(data)
+		     	  alert(data) 
 		     })
 		  }
+
 		})
 		
 		 

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+     <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+      <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+   
+     <style type="text/css">
+     .navbar-fixed-top{
+     	text-align: center;
+     	line-height: 50px;
+     	font-size: 20px;
+     	font-weight: 900;
+     	color: grey;
+     }	
+     .glyphicon-chevron-left,.glyphicon-plus-sign {
+     	line-height:51px;
+     	height: 30px;
+     	width: 30px;
+     	color: grey ;
+     	font-size: 20px;
+     	margin: 0 30px;
+     	cursor: pointer;
+     } 	
+     .form-control{
+        margin: 10px 10px;
+     	height: 50px;
+     }
+     #formm{
+     	margin:100px auto ;
+     	width: 90%;	
+     }
+     .radio{
+     	margin: 10px 25px;
+     	font-weight: 800px;
+     }
+     	.btn-success{
+     			margin: 10px 10px;
+     	}
+     </style>
+    <title>智游问答</title>
+   
+
+ 
+  </head>
+  <body>
+   <nav class="navbar navbar-inverse navbar-fixed-top">
+  <span class="glyphicon glyphicon-chevron-left pull-left"onclick="history.back()" id="">
+  </span>
+登录
+  <span class="pull-right glyphicon glyphicon-plus-sign"onclick="location.href = 'zhuc.html';" id="">
+  </span>
+</nav>
+	<div id="formm">
+		<form class="biaodan" action="/zc" method="post">
+		<input type="text" name="username" class="form-control" autofocus pattern="[a-zA-Z\u4e00\u9fa5]{3,}" placeholder="请填写昵称">
+		<input type="text" name="pwd" class="form-control" placeholder="请填写密码">
+		
+		<button type="button" class="btn btn-success btn-lg btn-block">登录</button>
+
+	</form>
+	</div>
+	<script type="text/javascript">
+	
+		
+		
+		
+
+	</script>
+  </body>
+  <script src="js/bootstrap.min.js"></script>
+</html>
